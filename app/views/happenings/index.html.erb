@@ -1,7 +1,7 @@
 <div class="page-header">
   <h1>Happenings</h>
 </div>
-  <%= link_to "Post New Happening", new_happening_path, :class => 'btn btn-success' %>
+<%= link_to "Post New Happening", new_happening_path, :class => 'btn btn-success' %>
 <% @happenings.each do |happening| %>
   <div class="happening">
     <strong><%= happening.name %></strong>
