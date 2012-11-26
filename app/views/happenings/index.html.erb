@@ -4,7 +4,7 @@
 <%= link_to "Post New Happening", new_happening_path, :class => 'btn btn-success' %>
 <% @happenings.each do |happening| %>
   <div class="happening">
-    <strong><%= happening.name %></strong>
+    <strong><%= happening.user.profile_name %></strong>
     <p><%= happening.content %></p>
     <div class="meta">
       <%= link_to time_ago_in_words(happening.created_at) + " ago", happening %>
