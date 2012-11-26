@@ -1,25 +1,17 @@
-<h1>Listing happenings</h1>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Content</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
+<div class="page-header">
+  <h1>Happenings</h>
+</div>
+  <%= link_to "Post New Happening", new_happening_path, :class => 'btn btn-success' %>
 <% @happenings.each do |happening| %>
-  <tr>
-    <td><%= happening.name %></td>
-    <td><%= happening.content %></td>
-    <td><%= link_to 'Show', happening %></td>
-    <td><%= link_to 'Edit', edit_happening_path(happening) %></td>
-    <td><%= link_to 'Destroy', happening, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+  <div class="happening">
+    <strong><%= happening.name %></strong>
+    <p><%= happening.content %></p>
+    <div class="meta">
+      <%= link_to time_ago_in_words(happening.created_at) + " ago", happening %>
+      <span class="admin">
+        | <%= link_to "Edit", edit_happening_path(happening) %> |
+          <%= link_to 'Delete', happening, :confirm => 'Are you sure?', :method => :delete %>
+      </span>
+    </div>
+  </div>
 <% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Happening', new_happening_path %>
