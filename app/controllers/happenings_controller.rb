@@ -1,4 +1,7 @@
 class HappeningsController < ApplicationController
+
+before_filter :authenticate_user!, :only => [:new]
+
   # GET /happenings
   # GET /happenings.json
   def index

@@ -2,9 +2,10 @@
   <h1>Happenings</h>
 </div>
 <%= link_to "Post New Happening", new_happening_path, :class => 'btn btn-success' %>
+
 <% @happenings.each do |happening| %>
-  <div class="happening">
-    <strong><%= happening.user.profile_name %></strong>
+<div class="happening">
+    <strong><%= happening.user.full_name %></strong>
     <p><%= happening.content %></p>
     <div class="meta">
       <%= link_to time_ago_in_words(happening.created_at) + " ago", happening %>
@@ -13,5 +14,5 @@
           <%= link_to 'Delete', happening, :confirm => 'Are you sure?', :method => :delete %>
       </span>
     </div>
-  </div>
+</div>
 <% end %>
