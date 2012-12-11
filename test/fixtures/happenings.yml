@@ -7,3 +7,7 @@ one:
 two:
   content: MyText
   user: bill
+
+three:
+  content: "Hi, I'm Fin the human"
+  user: fin

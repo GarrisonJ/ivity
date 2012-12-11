@@ -13,6 +13,8 @@ Ivity::Application.routes.draw do
   get 'feed', :to => 'happenings#index', :as => 'feed'
   root :to => "happenings#index"
 
+  get ':id', :to => 'profiles#show'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
