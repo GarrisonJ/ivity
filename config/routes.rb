@@ -1,7 +1,14 @@
 Ivity::Application.routes.draw do
   devise_for :users
 
+  devise_scope :user do
+    get 'register', :to => 'devise/registrations#new', :as => :register
+    get 'login', :to => 'devise/sessions#new', :as => :login
+    get 'logout', :to => 'devise/sessions#destroy', :as => :logout
+  end
+
   resources :happenings
+  get 'feed', :to => 'happenings#index', :as => 'feed'
   root :to => "happenings#index"
 
   # The priority is based upon order of creation:
