@@ -23,7 +23,28 @@ class HappeningsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should create happening" do
+  test "should get edit when logged in" do 
+    sign_in users(:bill)
+    get :edit, :id => @happening
+    assert_response :success
+  end
+
+  test "should redirect happening update when not logged in" do 
+    put :update, :id => @happening, :happenings => { :content => @happening.content }
+    assert_response :redirect
+    assert_redirected_to new_user_session_path
+  end
+
+
+  test "should be logged in to post a happening" do 
+    post :create, :happenings => { :content => "Hello" }
+    assert_response :redirect
+    assert_redirected_to new_user_session_path
+  end
+
+  test "should create happening when logged in" do
+    sign_in users(:bill)
+
     assert_difference('Happening.count') do
       post :create, :happening => { :content => @happening.content }
     end
@@ -36,12 +57,9 @@ class HappeningsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should get edit" do
-    get :edit, :id => @happening
-    assert_response :success
-  end
 
-  test "should update happening" do
+  test "should update happening when logged in" do
+    sign_in users(:bill)
     put :update, :id => @happening, :happening => { :content => @happening.content }
     assert_redirected_to happening_path(assigns(:happening))
   end
