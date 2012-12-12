@@ -43,7 +43,7 @@ before_filter :authenticate_user!, :only => [:new, :create, :edit, :update]
   # POST /happenings
   # POST /happenings.json
   def create
-    @happening = Happening.new(params[:happening])
+    @happening = current_user.happenings.new(params[:happening])
 
     respond_to do |format|
       if @happening.save
@@ -59,8 +59,10 @@ before_filter :authenticate_user!, :only => [:new, :create, :edit, :update]
   # PUT /happenings/1
   # PUT /happenings/1.json
   def update
-    @happening = Happening.find(params[:id])
-
+    @happening = current_user.happenings.find(params[:id])
+    if params[:happening] && params[:happening].has_key?(:user_id)
+      params[:happening].delete(:user_id) 
+    end
     respond_to do |format|
       if @happening.update_attributes(params[:happening])
         format.html { redirect_to @happening, :notice => 'Happening was successfully updated.' }
