@@ -1,17 +1,20 @@
 <p id="notice"><%= notice %></p>
 <%= stylesheet_link_tag 'gmaps4rails' %>
-<p>
-  <b>Name:</b>
-  <%= @happening.user.profile_name %>
-</p>
 
-<p>
-  <b>Content:</b>
-  <%= @happening.content %>
-</p>
+<div class="row">
+	<div class="span2>">
+		<p>
+		  <b>Name:</b>
+		  <%= @happening.user.profile_name %>
+		</p>
 
-
-<%= link_to 'Edit', edit_happening_path(@happening) %> |
-<%= link_to 'Back', happenings_path %>
-<%= gmaps4rails(@json) %>
+		<p>
+		  <b>Content:</b>
+		  <%= @happening.content %>
+		</p>
+			<%= link_to 'Edit', edit_happening_path(@happening) %> |
+	<%= link_to 'Back', happenings_path %>
+	</div>
+	<div class="span2"><%= gmaps4rails(@json) %></div>
+</div>
 <%= yield :scripts %> 
