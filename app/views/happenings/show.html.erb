@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+<%= stylesheet_link_tag 'gmaps4rails' %>
 <p>
   <b>Name:</b>
   <%= @happening.user.profile_name %>
@@ -13,3 +13,5 @@
 
 <%= link_to 'Edit', edit_happening_path(@happening) %> |
 <%= link_to 'Back', happenings_path %>
+<%= gmaps4rails(@json) %>
+<%= yield :scripts %> 

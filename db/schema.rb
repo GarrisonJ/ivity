@@ -10,13 +10,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121126042221) do
+ActiveRecord::Schema.define(:version => 20121213205111) do
 
   create_table "happenings", :force => true do |t|
     t.text     "content"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "user_id"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.boolean  "gmaps"
+    t.string   "address"
   end
 
   add_index "happenings", ["user_id"], :name => "index_happenings_on_user_id"

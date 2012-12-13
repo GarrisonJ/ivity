@@ -1,12 +1,11 @@
 class HappeningsController < ApplicationController
 
 before_filter :authenticate_user!, :only => [:new, :create, :edit, :update]
-
   # GET /happenings
   # GET /happenings.json
   def index
     @happenings = Happening.all
-
+    @json = Happening.all.to_gmaps4rails
     respond_to do |format|
       format.html # index.html.erb
       format.json { render :json => @happenings }
@@ -17,7 +16,7 @@ before_filter :authenticate_user!, :only => [:new, :create, :edit, :update]
   # GET /happenings/1.json
   def show
     @happening = Happening.find(params[:id])
-
+    @json = Happening.all.to_gmaps4rails
     respond_to do |format|
       format.html # show.html.erb
       format.json { render :json => @happening }

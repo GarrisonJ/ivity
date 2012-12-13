@@ -1,9 +1,14 @@
 class Happening < ActiveRecord::Base
-  attr_accessible :content, :user_id
+  attr_accessible :content, :user_id, :address
   belongs_to :user
 
+  acts_as_gmappable 
   validates :content, :presence => true,
   					   :length => { :minimum => 2 }
 
   validates :user_id, :presence => true
+
+  def gmaps4rails_address
+  	self.address 
+  end
 end
