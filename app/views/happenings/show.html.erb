@@ -1,4 +1,3 @@
-<p id="notice"><%= notice %></p>
 <%= stylesheet_link_tag 'gmaps4rails' %>
 
 <div class="row">
@@ -11,6 +10,10 @@
 		<p>
 		  <b>Content:</b>
 		  <%= @happening.content %>
+		</p>
+		<p> 
+			<b>Tags:</b>
+			<%= @happening.tag_list %>
 		</p>
 			<%= link_to 'Edit', edit_happening_path(@happening) %> |
 	<%= link_to 'Back', happenings_path %>

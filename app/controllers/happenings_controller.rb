@@ -16,7 +16,7 @@ before_filter :authenticate_user!, :only => [:new, :create, :edit, :update]
   # GET /happenings/1.json
   def show
     @happening = Happening.find(params[:id])
-    @json = Happening.all.to_gmaps4rails
+    @json = Happening.find(params[:id]).to_gmaps4rails
     respond_to do |format|
       format.html # show.html.erb
       format.json { render :json => @happening }
