@@ -4,8 +4,13 @@ before_filter :authenticate_user!, :only => [:new, :create, :edit, :update]
   # GET /happenings
   # GET /happenings.json
   def index
-    @happenings = Happening.all
-    @json = Happening.all.to_gmaps4rails
+
+    if params[:tag]
+      @happenings = Happening.tagged_with(params[:tag])
+    else
+      @happenings = Happening.all
+    end
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render :json => @happenings }

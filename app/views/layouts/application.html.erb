@@ -12,7 +12,7 @@
 			<div class="container">
 				<a><%= link_to "Ivity.it", feed_path , :class => 'brand' %></a>
 				<form class="navbar-search pull-left">
-  					<input type="text" class="search-query" placeholder="Search">
+  					<input class="search-query" id="tag" name="tag" type="text" placeholder="Search Tags">
 				</form>
 				<ul class="nav pull-right">
 					<% if user_signed_in? %>

@@ -1,6 +1,6 @@
 Ivity::Application.routes.draw do
   get "profiles/show"
-
+  get "tags/:tag", :to => "happenings#index", :as => :tag
   devise_for :users
 
   devise_scope :user do

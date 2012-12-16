@@ -12,4 +12,5 @@ class Happening < ActiveRecord::Base
   def gmaps4rails_address
   	self.address 
   end
+
 end
