@@ -1,6 +1,6 @@
 class HappeningsController < ApplicationController
 
-before_filter :authenticate_user!, :only => [:new, :create, :edit, :update]
+before_filter :authenticate_user!, :only => [:new, :create, :edit, :update, :destroy]
   # GET /happenings
   # GET /happenings.json
   def index
@@ -81,12 +81,20 @@ before_filter :authenticate_user!, :only => [:new, :create, :edit, :update]
   # DELETE /happenings/1
   # DELETE /happenings/1.json
   def destroy
-    @happening = Happening.find(params[:id])
-    @happening.destroy
+    @happening = current_user.happenings.find(params[:id])
+
+    if params[:happening] && params[:happening].has_key?(:user_id)
+      params[:happening].delete(:user_id) 
+    end
 
     respond_to do |format|
-      format.html { redirect_to happenings_url }
-      format.json { head :no_content }
+      if @happening.destroy
+        format.html { redirect_to happenings_url }
+        format.json { head :no_content }
+      else
+        format.html { render :action => "edit" }
+        format.json { render :json => @happening.errors, :status => :unprocessable_entity }
+      end
     end
   end
 end

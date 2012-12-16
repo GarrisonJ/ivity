@@ -96,4 +96,13 @@ class HappeningsControllerTest < ActionController::TestCase
 
     assert_redirected_to happenings_path
   end
+
+  #  test "should destroy happening when current user is user who created happening" do
+  #   sign_in users(:bill)
+  #   post :create, :happening => { :content => @happening.content }
+  #   !assert_difference('Happening.count', -1) do
+  #     delete :destroy, :id => users(:fin).id
+  #   end
+  #   assert_redirected_to happenings_path
+  # end
 end
