@@ -4,7 +4,6 @@ before_filter :authenticate_user!, :only => [:new, :create, :edit, :update, :des
   # GET /happenings
   # GET /happenings.json
   def index
-
     if params[:tag]
       @happenings = Happening.tagged_with(params[:tag])
     else
