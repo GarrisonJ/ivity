@@ -8,7 +8,10 @@
   <div class="accordion-group">
     <div class="accordion-heading">
        <a class="accordion-toggle" data-toggle="collapse" href="#collapse<%=happening.id%>">
-        <strong><%= happening.user.first_name %></strong>
+        <div class="row-fluid">
+          <strong><%= happening.title %></strong>
+          <p class="muted pull-right">Created by: <%=happening.user.full_name%></p>
+      </div>
       </a>
     </div>
 
@@ -17,6 +20,7 @@
         <div class="happening">
           <p><b>What: </b><%= happening.content %></p>
           <p><b>Where: </b> <%= happening.address %></p>
+          <p><b>When: </b> <%= happening.time_of %></p>
           <div class="meta">
             <%= link_to time_ago_in_words(happening.created_at) + " ago", happening %>
             <span class="admin">

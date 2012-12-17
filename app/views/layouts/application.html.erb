@@ -15,8 +15,8 @@
   					<input class="search-query" id="tag" name="tag" type="text" placeholder="Search Tags">
 				</form>
 				<ul class="nav pull-right">
-					<li><button type="submit" class="btn pull-right"><%= link_to "Post New Happening", new_happening_path %></button></li>
-					<li><a></a></li>
+					<li><%= button_to "Post New Happening", new_happening_path, :class=>"btn pull-right", :type=>"submit", :method => :get %></li>
+					<li><a></a></li> <!-- Space between-->
 					<% if user_signed_in? %>
 						<li><div class="btn-group">
 						  <a class="btn btn-primary" href="<%="/"+current_user.profile_name%>"><%= current_user.full_name %></a>
