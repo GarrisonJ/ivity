@@ -11,9 +11,11 @@
 		<div class="navbar-inner">
 			<div class="container">
 				<a><%= link_to "Ivity.it", feed_path , :class => 'brand' %></a>
-				<form class="navbar-search pull-left">
-  					<input class="search-query" id="tag" name="tag" type="text" placeholder="Search Tags">
-				</form>
+				<!-- Begin search code -->
+				<%= form_tag("/", :method => "get", :class => "navbar-search pull-left") do %>
+				  <%= submit_tag("", :class => "search-query", :name=>"search", :placeholder => "Search", :type=>"text") %>
+				<% end %> 
+				<!-- End search code -->
 				<ul class="nav pull-right">
 					<li><%= button_to "Post New Happening", new_happening_path, :class=>"btn pull-right", :type=>"submit", :method => :get %></li>
 					<li><a></a></li> <!-- Space between-->

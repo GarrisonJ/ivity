@@ -1,16 +1,15 @@
-<%= stylesheet_link_tag 'gmaps4rails' %>
 <div class="page-header">
-  <h1>Happenings</h>
+   <h1>Happenings</h1>
 </div>
-
 <% @happenings.each do |happening, json| %>
 <div class="accordion">
   <div class="accordion-group">
     <div class="accordion-heading">
        <a class="accordion-toggle" data-toggle="collapse" href="#collapse<%=happening.id%>">
-        <div class="row-fluid">
-          <strong><%= happening.title %></strong>
-          <p class="muted pull-right">Created by: <%=happening.user.full_name%></p>
+        <div class="row">
+          <strong class="pull-left span3"><%= happening.title %></strong>
+          <p class="muted pull-right">Created by: <%= happening.user.full_name %></p>
+          <p class"span2"><%= happening.content %></p>
       </div>
       </a>
     </div>
@@ -20,7 +19,7 @@
         <div class="happening">
           <p><b>What: </b><%= happening.content %></p>
           <p><b>Where: </b> <%= happening.address %></p>
-          <p><b>When: </b> <%= happening.time_of %></p>
+          <p><b>When: </b> <%= distance_of_time_in_words( Time.now, happening.time_of) %></p>
           <div class="meta">
             <%= link_to time_ago_in_words(happening.created_at) + " ago", happening %>
             <span class="admin">
@@ -34,4 +33,4 @@
   </div>
 </div>
 <% end %>
-<%= yield :scripts %> 
+

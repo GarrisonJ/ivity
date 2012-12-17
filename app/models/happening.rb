@@ -5,10 +5,12 @@ class Happening < ActiveRecord::Base
 
   acts_as_gmappable 
   validates :content, :presence => true,
-  					   :length => { :minimum => 2 }
+  					   :length => { :minimum => 2, :maximum => 140 }
 
   validates :user_id, :presence => true
 
+  validates :title, :presence => true,
+                    :length => { :minimum => 2, :maximum => 20 }
   def gmaps4rails_address
   	self.address 
   end

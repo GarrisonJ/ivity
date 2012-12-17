@@ -6,6 +6,8 @@ before_filter :authenticate_user!, :only => [:new, :create, :edit, :update, :des
   def index
     if params[:tag]
       @happenings = Happening.tagged_with(params[:tag])
+    elsif params[:search]
+      @happenings = Happening.tagged_with("#{params[:search]}")
     else
       @happenings = Happening.all
     end
