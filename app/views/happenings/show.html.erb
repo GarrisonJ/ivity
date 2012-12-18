@@ -1,24 +1,23 @@
 <%= stylesheet_link_tag 'gmaps4rails' %>
 
 <div class="row">
-	<div class="span4">
-		<p class="lead">
-		  <%= @happening.title %>
-		</p>
+	<div class="span3">
 		<p>
+		  <b>Name:</b>
+		  <%= @happening.user.profile_name %>
+		</p>
+
+		<p>
+		  <b>Content:</b>
 		  <%= @happening.content %>
 		</p>
 		<p> 
-		<p>
-		  <b>Created by:</b>
-		  <%= link_to @happening.user.profile_name, "/"+@happening.user.profile_name  %>
-		</p>
 			<b>Tags:</b>
 			<%= raw @happening.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
 		</p>
 			<%= link_to 'Edit', edit_happening_path(@happening) %> |
 	<%= link_to 'Back', happenings_path %>
 	</div>
-	<div class="span4"><%= gmaps4rails(@json) %></div>
+	<div class="span2"><%= gmaps4rails(@json) %></div>
 </div>
 <%= yield :scripts %> 
