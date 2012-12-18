@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121217042406) do
+ActiveRecord::Schema.define(:version => 20121218013123) do
 
   create_table "happenings", :force => true do |t|
     t.text     "content"
@@ -43,6 +43,15 @@ ActiveRecord::Schema.define(:version => 20121217042406) do
   create_table "tags", :force => true do |t|
     t.string "name"
   end
+
+  create_table "user_events", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "happening_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "user_events", ["user_id", "happening_id"], :name => "index_user_events_on_user_id_and_happening_id"
 
   create_table "users", :force => true do |t|
     t.string   "first_name"
