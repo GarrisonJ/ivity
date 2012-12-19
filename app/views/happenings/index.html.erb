@@ -1,3 +1,4 @@
+
 <div class="page-header">
    <h1>Happenings</h1>
 </div>
@@ -6,10 +7,10 @@
   <div class="accordion-group">
     <div class="accordion-heading">
        <a class="accordion-toggle" data-toggle="collapse" href="#collapse<%=happening.id%>">
-        <div class="row">
+        <div class="row-fluid">
           <strong class="pull-left span3"><%= happening.title %></strong>
           <p class="muted pull-right">Created by: <%= happening.user.full_name %></p>
-          <p class"span2"><%= happening.content %></p>
+          <p class"span5 text-info"><%= happening.content %></p>
       </div>
       </a>
     </div>
@@ -33,4 +34,3 @@
   </div>
 </div>
 <% end %>
-
