@@ -9,7 +9,7 @@
 		<%= simple_form_for current_user.favorites.build(:happening_id => @happening.id), :remote => true do |f| %>
 			<%= f.hidden_field :happening_id %>
 			<%= f.hidden_field :user_id %>
-			<%= f.button :submit, "I'll be there!", :class => "btn btn-primary"  %>
+			<%= f.button :submit, "I'm going!", :class => "btn btn-primary"  %>
 		<% end %>
 	<% end %>
 <% end %>

@@ -15,9 +15,9 @@
 		<% end %>
 	</div>
 	<div class="span4 well">
-		<strong>Attending</strong></br>
+		<strong>Calendar</strong></br>
 		<% @favorites.each do |f| %>
-			<%= f.happening.title %>
+			<a><%= link_to f.happening.title, f.happening %> in <%= distance_of_time_in_words( Time.now, f.happening.time_of) %> </a></br>
 		<% end %>
 	</div>
 </div>
