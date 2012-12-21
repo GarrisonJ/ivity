@@ -22,3 +22,12 @@
 .happening.hover .admin {
 	display: inline;
 }
+
+.happening-title {
+	margin-bottom: -15px; // Created by should be underneath title
+}
+
+.attending_user {
+	overflow-y: scroll;
+	height: 400px;
+}

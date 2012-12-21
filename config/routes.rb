@@ -9,7 +9,7 @@ Ivity::Application.routes.draw do
     get 'logout', :to => 'devise/sessions#destroy', :as => :logout
   end
 
-  resources :user_events
+  resources :favorites, :only => [:create, :destroy]
 
   resources :happenings
   get 'feed', :to => 'happenings#index', :as => 'feed'
