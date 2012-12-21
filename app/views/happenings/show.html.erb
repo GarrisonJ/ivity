@@ -1,23 +1,41 @@
 <%= stylesheet_link_tag 'gmaps4rails' %>
 
-<div class="row">
-	<div class="span3">
-		<p>
-		  <b>Name:</b>
-		  <%= @happening.user.profile_name %>
-		</p>
 
-		<p>
-		  <b>Content:</b>
-		  <%= @happening.content %>
+<div class="row">
+
+	<div class="span3">
+
+		<p class="lead happening-title"><%= @happening.title %><p>
+		<p class="muted">
+		  <small>Created by: <%= @happening.user.profile_name %></small>
 		</p>
+		<p><%= @happening.content %></p>
+
 		<p> 
 			<b>Tags:</b>
 			<%= raw @happening.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
 		</p>
+		<p>
 			<%= link_to 'Edit', edit_happening_path(@happening) %> |
-	<%= link_to 'Back', happenings_path %>
+			<%= link_to 'Back', happenings_path %>
+		</p>
 	</div>
-	<div class="span2"><%= gmaps4rails(@json) %></div>
+
+	<div class="span6"> 
+		<%= gmaps4rails(@json) %>
+	</div>
+
+	<div class="span3 attending_user">
+	<div id="favorite">
+		<%= render 'favorites/favorite_button', :happening => @happening %>
+	</div>
+	  <b>Attending:</b></br>
+	  <% @favorites.reverse_each do |f| %>
+	  	<a class="text-success" href="<%="/"+f.user.profile_name %>"><%= f.user.full_name %></a></br>
+	  <% end %>
+	</div>
+
 </div>
+
+
 <%= yield :scripts %> 

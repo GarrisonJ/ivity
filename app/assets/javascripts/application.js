@@ -13,3 +13,13 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+$(".favorite").click(function() {
+  var happening_id = $(this).attr('id');
+  $.ajax({
+    type: "GET",
+    url: 'favorites/' + happening_id,
+    success: function() {
+      // change image or something
+    }
+  })
+})

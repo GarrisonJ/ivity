@@ -5,9 +5,9 @@ before_filter :authenticate_user!, :only => [:new, :create, :edit, :update, :des
   # GET /happenings.json
   def index
     if params[:tag]
-      @happenings = Happening.tagged_with(params[:tag])
+      @happenings = Happening.tagged_with(params[:tag]).reverse_order
     elsif params[:search]
-      @happenings = Happening.tagged_with("#{params[:search]}")
+      @happenings = Happening.tagged_with("#{params[:search]}").reverse_order
     else
       @happenings = Happening.all
     end
@@ -21,6 +21,7 @@ before_filter :authenticate_user!, :only => [:new, :create, :edit, :update, :des
   # GET /happenings/1
   # GET /happenings/1.json
   def show
+    @favorites = Happening.find(params[:id]).favorites
     @happening = Happening.find(params[:id])
     @json = Happening.find(params[:id]).to_gmaps4rails
     respond_to do |format|

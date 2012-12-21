@@ -2,8 +2,6 @@ require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
 
-	should have_many(:UserEvents)
-
 	 test 'a user should enter a first name' do 
 	 	user = User.new
 	 	assert !user.save

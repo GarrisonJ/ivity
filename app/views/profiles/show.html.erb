@@ -2,12 +2,22 @@
 	<h1><%= @user.full_name %></h1>
 </div>
 
-<% if @happenings %>
-	<% @happenings.each do |happening| %>
-		<div class ="well"> 
-			<%= happening.content %>
-			<hr />
-			<%= link_to time_ago_in_words(happening.created_at), happening_path(happening) %> ago
-		</div>
-	<% end %>
-<% end %>
+<div class="row-fluid">
+	<div class="span8">
+		<% if @happenings %>
+			<% @happenings.each do |happening| %>
+				<div class ="well"> 
+					<%= happening.content %>
+					<hr />
+					<%= link_to time_ago_in_words(happening.created_at), happening_path(happening) %> ago
+				</div>
+			<% end %>
+		<% end %>
+	</div>
+	<div class="span4 well">
+		<strong>Attending</strong></br>
+		<% @favorites.each do |f| %>
+			<%= f.happening.title %>
+		<% end %>
+	</div>
+</div>
