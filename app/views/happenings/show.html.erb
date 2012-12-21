@@ -9,11 +9,13 @@
 		<p class="muted">
 		  <small>Created by: <%= @happening.user.profile_name %></small>
 		</p>
+		<div id="favorite">
+			<%= render 'favorites/favorite_button', :happening => @happening %>
+		</div>
 		<p><%= @happening.content %></p>
-
 		<p> 
 			<b>Tags:</b>
-			<%= raw @happening.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
+			<%= show_tag_list @happening %>
 		</p>
 		<p>
 			<%= link_to 'Edit', edit_happening_path(@happening) %> |
@@ -26,10 +28,7 @@
 	</div>
 
 	<div class="span3">
-	<div id="favorite">
-		<%= render 'favorites/favorite_button', :happening => @happening %>
-	</div>
-	  <b>Attending:</b></br>
+	  <b>Attending:</b> <span class="badge badge-success"><%= @favorites.count %></span></br>
 	    <div class="attending_user">
 		  <% @favorites.reverse_each do |f| %>
 		  	<a class="text-success" href="<%="/"+f.user.profile_name %>"><%= f.user.full_name %></a></br>
