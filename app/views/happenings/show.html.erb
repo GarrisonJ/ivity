@@ -25,14 +25,16 @@
 		<%= gmaps4rails(@json) %>
 	</div>
 
-	<div class="span3 attending_user">
+	<div class="span3">
 	<div id="favorite">
 		<%= render 'favorites/favorite_button', :happening => @happening %>
 	</div>
 	  <b>Attending:</b></br>
-	  <% @favorites.reverse_each do |f| %>
-	  	<a class="text-success" href="<%="/"+f.user.profile_name %>"><%= f.user.full_name %></a></br>
-	  <% end %>
+	    <div class="attending_user">
+		  <% @favorites.reverse_each do |f| %>
+		  	<a class="text-success" href="<%="/"+f.user.profile_name %>"><%= f.user.full_name %></a></br>
+		  <% end %>
+		</div>
 	</div>
 
 </div>
