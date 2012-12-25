@@ -9,7 +9,7 @@ class Favorite < ActiveRecord::Base
   # Validations
   validates :user_id, :presence => true
   validates :happening_id, :presence => true
-
+  # TODO: validates the uniqueness of the favorite. A user can only favorite a happening once. 
 
   def has_favorite? product
     favorites.find_by_happening_id happening.id
