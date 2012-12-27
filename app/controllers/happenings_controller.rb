@@ -5,11 +5,11 @@ before_filter :authenticate_user!, :only => [:new, :create, :edit, :update, :des
   # GET /happenings.json
   def index
     if params[:tag]
-      @happenings = Happening.tagged_with(params[:tag]).recent(10).reverse_order
+      @happenings = Happening.tagged_with(params[:tag]).reverse_order.page(params[:page])
     elsif params[:search]
-      @happenings = Happening.tagged_with("#{params[:search]}").reverse_order
+      @happenings = Happening.tagged_with("#{params[:search]}").reverse_order.page(params[:page])
     else
-      @happenings = Happening.order("created_at").reverse_order.take(10)
+      @happenings = Happening.order("created_at").reverse_order.page(params[:page])
     end
 
     respond_to do |format|

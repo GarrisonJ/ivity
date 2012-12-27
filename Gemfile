@@ -6,7 +6,7 @@ gem 'acts_as_rateable'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 gem 'gmaps4rails'
-
+gem 'kaminari'
 gem 'acts-as-taggable-on', '~> 2.3.1'
 
 
