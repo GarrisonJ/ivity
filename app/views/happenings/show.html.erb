@@ -1,6 +1,7 @@
 <%= stylesheet_link_tag 'gmaps4rails' %>
-
-
+<script>  
+	$('.carousel').carousel()
+</script> 
 <div class="row">
 
 	<div class="span3">
@@ -9,10 +10,30 @@
 		<p class="muted">
 		  <small>Created by: <%= @happening.user.profile_name %></small>
 		</p>
-		<div id="favorite">
-			<%= render 'favorites/favorite_button', :happening => @happening %>
+		<p>
+			<div id="favorite">
+				<%= render 'favorites/favorite_button', :happening => @happening %>
+			</div>
+		</p>
+		<p>
+			<%= @happening.content %>
+		</p>
+		<!-- Time Carousel -->
+		<div id="myCarousel" class="carousel slide" data-interval="false">
+			<!-- Carousel items -->
+			<div class="carousel-inner">
+				<div class="active item"><%= @happening.time_of.to_formatted_s(:long_ordinal) %></div>
+				<div class="item"><%= @happening.time_of.strftime("%A") %> at 
+				  				  <%= @happening.time_of.strftime("%I:%M %p") %>
+				</div>
+				<div class="item"><%= @happening.time_of %></div>
+				<div class="item">in <%= distance_of_time_in_words( Time.now, @happening.time_of) %></div>
+			</div>
+			  <!-- Carousel nav -->
+			  <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+			  <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
 		</div>
-		<p><%= @happening.content %></p>
+		<!-- End Time Carousel -->
 		<p> 
 			<b>Tags:</b>
 			<%= show_tag_list @happening %>

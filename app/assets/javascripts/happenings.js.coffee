@@ -6,3 +6,4 @@ $ ->
 	$('.happening').hover (event) ->
 		$(this).toggleClass("hover")
 
+
