@@ -22,12 +22,8 @@
 		<div id="myCarousel" class="carousel slide" data-interval="false">
 			<!-- Carousel items -->
 			<div class="carousel-inner">
-				<div class="active item"><%= @happening.time_of.to_formatted_s(:long_ordinal) %></div>
-				<div class="item"><%= @happening.time_of.strftime("%A") %> at 
-				  				  <%= @happening.time_of.strftime("%I:%M %p") %>
-				</div>
-				<div class="item"><%= @happening.time_of %></div>
-				<div class="item">in <%= distance_of_time_in_words( Time.now, @happening.time_of) %></div>
+				<div class="active item"><%= @happening.time_of.strftime("%a | %B %d | %I:%M %p") %></div>
+				<div class="item"><%= distance_of_time_in_words( Time.now, @happening.time_of) %></div>
 			</div>
 			  <!-- Carousel nav -->
 			  <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
