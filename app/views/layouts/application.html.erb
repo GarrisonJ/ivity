@@ -4,7 +4,7 @@
 <script src="/twitter-bootstrap/twitter-bootstrap-v2/js/bootstrap-popover.js"></script>   
 <html>
 <head>
-  <title>Ivity</title>
+  <title><%=h yield(:title) %></title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
@@ -20,7 +20,7 @@
 				<% end %> 
 				<!-- End search code -->
 				<ul class="nav pull-right">
-					<li><%= button_to "Post New Happening", new_happening_path, :class=>"btn pull-right", :type=>"submit", :method => :get %></li>
+					<li><%= button_to "+ Post New Happening", new_happening_path, :class=>"btn pull-right", :type=>"submit", :method => :get %></li>
 					<li><a></a></li> <!-- Space between-->
 					<% if user_signed_in? %>
 						<li><div class="btn-group">
