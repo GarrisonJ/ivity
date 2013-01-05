@@ -14,7 +14,7 @@
     <div class="row-fluid">
       <div class="span3"><%= f.input :title %></div>
       <div class="span3"><%= f.input :address %></div>
-      <div class="span3"><%= f.input :tag_list %></div>
+      <div class="span3"><%= f.input :tag_list, :hint => "Seperate tags with commas \",\"" %></div>
     </div>
     <div class="row-fluid">
       <div class="span12"><%= f.input :time_of, :label => 'Start Date', :start_year => Date.today.year,
