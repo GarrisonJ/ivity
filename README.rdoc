@@ -1,3 +1,5 @@
 == Ivity.it
 
-This project will help you find what's happening.
+Find out what's happening near you.
+
+View this app: http://shielded-brook-2319.herokuapp.com
