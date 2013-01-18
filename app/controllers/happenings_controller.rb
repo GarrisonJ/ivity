@@ -9,7 +9,7 @@ before_filter :authenticate_user!, :only => [:new, :create, :edit, :update, :des
     elsif params[:search]
       @happenings = Happening.tagged_with("#{params[:search]}").reverse_order.page(params[:page]).per(10)
     else
-      @happenings = Happening.order("created_at").reverse_order.page(params[:page]).per(10)
+      @happenings = Happening.order("time_of").reverse_order.page(params[:page]).per(10)
     end
 
     respond_to do |format|
