@@ -1,23 +1,31 @@
 <div class="page-header">
-	<h1><%=h content_for(:title, @user.full_name) %></h1>
+	<%=content_for(:title, @user.full_name) %>
+	<h1><%=h yield(:title) %></h1>
+</div>
+<div class="row-fluid">
+	<div class="span7">
+	<table class="table table-bordered">
+		<thread><th><h4>Created by <%=@user.full_name%></h4></th></thread>
+		</tbody>
+		<tr>
+		<td>
+			<% if @happenings %>
+				<% @happenings.each do |happening| %>
+					<div class ="well"> 
+						<%= happening.content %>
+						<hr />
+						<%= link_to "Created "+time_ago_in_words(happening.created_at), happening_path(happening) %> ago
+					</div>
+				<% end %>
+			<% end %>
+		</td>
+		</tr>
+		</tbody>
+	</table>
+	</div>
+	<div class="span5 well">
+		<%= render 'calendar' %>
+	</div>
 </div>
 
-<div class="row-fluid">
-	<div class="span8">
-		<% if @happenings %>
-			<% @happenings.each do |happening| %>
-				<div class ="well"> 
-					<%= happening.content %>
-					<hr />
-					<%= link_to time_ago_in_words(happening.created_at), happening_path(happening) %> ago
-				</div>
-			<% end %>
-		<% end %>
-	</div>
-	<div class="span4 well">
-		<strong>Calendar</strong></br>
-		<% @favorites.each do |f| %>
-			<a><%= link_to f.happening.title, f.happening %> in <%= distance_of_time_in_words( Time.now, f.happening.time_of) %> </a></br>
-		<% end %>
-	</div>
-</div>
+strftime("%a | %B %d | %I:%M %p")
