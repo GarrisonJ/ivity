@@ -19,23 +19,16 @@
 		<p>
 			<%= @happening.content %>
 		</p>
-		<!-- Time Carousel -->
-		<div id="myCarousel" class="carousel slide" data-interval="false">
-			<!-- Carousel items -->
-			<div class="carousel-inner">
-				<div class="active item"><%= @happening.time_of.strftime("%a | %B %d | %I:%M %p") %></div>
-				<div class="item"><%= distance_of_time_in_words( Time.now, @happening.time_of) %></div>
-			</div>
-			  <!-- Carousel nav -->
-			  <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-			  <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
-		</div>
-		<!-- End Time Carousel -->
-				<p>
-		<a href="https://twitter.com/share" class="twitter-share-button" data-lang="en">Tweet</a>
+			<div class="active item"><%= @happening.time_of.strftime("%a | %B %d | %I:%M %p") %></div>
+		<p>
+		<!-- start twitter-->
+		<p>
+			<a href="https://twitter.com/share" class="twitter-share-button" data-lang="en">Tweet</a>
+		</p>
 		<script>
 			!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
 		</script>
+		<!-- end twitter-->
 		</p>
 		<p> 
 			<b>Tags:</b>
