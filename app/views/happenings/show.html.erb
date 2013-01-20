@@ -32,7 +32,10 @@
 			<%= show_tag_list @happening %>
 		</p>
 		<p>
+			<% if current_user == @happening.user %>
 			<%= link_to 'Edit', edit_happening_path(@happening) %> |
+			<%= link_to 'Delete', @happening, :confirm => 'Are you sure?', :method => :delete %> |
+			<% end %>
 			<%= link_to 'Back', happenings_path %>
 		</p>
 	</div>
