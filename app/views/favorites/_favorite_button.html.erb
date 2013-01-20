@@ -1,5 +1,3 @@
-
-
 <% if current_user %>
 	<% if favorite = current_user.favorites.find_by_happening_id(@happening.id) %>
 		<%= simple_form_for favorite, :html => { :method => :delete }, :remote => true do |f| %>
@@ -13,5 +11,5 @@
 		<% end %>
 	<% end %>
 <% elsif %>
-	<button class="btn btn-primary disabled">I'm going!</button>
+	<%= link_to "I'm going!", login_path, :class=>"btn btn-primary disabled" %>
 <% end %>
