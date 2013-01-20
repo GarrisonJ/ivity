@@ -20,7 +20,7 @@
         <div class="happening">
           <p><b>What: </b><%= happening.content %></p>
           <p><b>Where: </b> <%= happening.address %></p>
-          <p><b>When: </b> <%= distance_of_time_in_words( Time.now, happening.time_of) %></p>
+          <p><b>When: </b> <%= happening.time_of.strftime("%a | %B %d | %I:%M %p") %></p>
           <div class="meta">
             <%= link_to "More", happening %>
             <span class="admin">
