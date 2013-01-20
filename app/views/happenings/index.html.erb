@@ -23,10 +23,12 @@
           <p><b>When: </b> <%= happening.time_of.strftime("%a | %B %d | %I:%M %p") %></p>
           <div class="meta">
             <%= link_to "More", happening %>
+            <% if current_user == happening.user %>
             <span class="admin">
               | <%= link_to "Edit", edit_happening_path(happening) %> |
                 <%= link_to 'Delete', happening, :confirm => 'Are you sure?', :method => :delete %>
             </span>
+            <% end %>
           </div>
         </div>
       </div>
