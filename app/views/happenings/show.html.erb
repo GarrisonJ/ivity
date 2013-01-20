@@ -6,7 +6,7 @@
 		<p class="lead happening-title"><%= @happening.title %><p>
 
 		<p class="muted">
-		  <small>Created by: <%= @happening.user.profile_name %></small>
+		  <small>Created by: <%= link_to @happening.user.profile_name, "/"+@happening.user.profile_name %></small>
 		</p>
 		<p>
 			<div id="favorite">
