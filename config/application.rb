@@ -59,5 +59,14 @@ module Ivity
     config.assets.version = '1.0'
     config.assets.precompile += %w( *.js *.css )
     config.assets.initialize_on_precompile = false
+
+    # Render diffrent view for devise
+    config.to_prepare do
+      Devise::SessionsController.layout "devise"
+      Devise::RegistrationsController.layout proc{ |controller| user_signed_in? ? "application" : "devise" }
+      Devise::ConfirmationsController.layout "devise"
+      Devise::UnlocksController.layout "devise"            
+      Devise::PasswordsController.layout "devise"      
+    end  
   end
 end

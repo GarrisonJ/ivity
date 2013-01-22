@@ -7,14 +7,14 @@ Ivity::Application.routes.draw do
     get 'register', :to => 'devise/registrations#new', :as => :register
     get 'login', :to => 'devise/sessions#new', :as => :login
     get 'logout', :to => 'devise/sessions#destroy', :as => :logout
-    root :to => "devise/sessions#new"
   end
 
   resources :favorites, :only => [:create, :destroy]
 
   resources :happenings
   get 'feed', :to => 'happenings#index', :as => 'feed'
-  root :to => "happenings#index"
+  
+  root :to => 'happenings#index'
 
   get ':id', :to => 'profiles#show'
 

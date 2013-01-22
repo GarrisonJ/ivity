@@ -1,6 +1,6 @@
 class HappeningsController < ApplicationController
 
-before_filter :authenticate_user!, :only => [:new, :create, :edit, :update, :destroy]
+before_filter :authenticate_user!, :only => [:new, :create, :edit, :update, :destroy, :index]
   # GET /happenings
   # GET /happenings.json
   def index
