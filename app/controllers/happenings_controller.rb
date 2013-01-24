@@ -1,6 +1,7 @@
 class HappeningsController < ApplicationController
 
-before_filter :authenticate_user!, :only => [:new, :create, :edit, :update, :destroy, :index]
+before_filter :authenticate_user!, :only => [:new, :create, :edit, :update, :destroy]
+before_filter :require_login, :only => [:index] # Will not show error message
   # GET /happenings
   # GET /happenings.json
   def index
@@ -99,4 +100,12 @@ before_filter :authenticate_user!, :only => [:new, :create, :edit, :update, :des
       end
     end
   end
+
+def require_login
+    unless signed_in?
+      redirect_to register_path # halts request cycle
+    end
+  end
+
+
 end

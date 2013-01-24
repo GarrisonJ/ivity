@@ -22,6 +22,7 @@ class User < ActiveRecord::Base
   has_many :happenings
   has_many :favorites
   has_many :favorite_happenings, :through => :favorites, :source => :happening
+  
   def full_name
   	first_name + " " + last_name 
   end
