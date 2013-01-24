@@ -103,7 +103,7 @@ before_filter :require_login, :only => [:index] # Will not show error message
 
 def require_login
     unless signed_in?
-      redirect_to register_path # halts request cycle
+      redirect_to login_path # halts request cycle
     end
   end
 
