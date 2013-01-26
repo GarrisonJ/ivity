@@ -32,32 +32,5 @@
 	height: 400px;
 }
 
-.carousel-control {
-  position: absolute;
-  top: 40%;
-  left: 0px;
-  right: 0px;
-  width: 50px;
-  height: 40px;
-  margin-top: -20px;
-  font-size: 60px;
-  font-weight: 100;
-  line-height: 30px;
-  color: #ffffff;
-  text-align: center;
-  background: #222222;
-  border: 3px solid #ffffff;
-  -webkit-border-radius: 0px;
-     -moz-border-radius: 0px;
-          border-radius: 0px;
-  opacity: 0;
-  filter: alpha(opacity=0);
-}
-
-.carousel-control.right {
-  right: 0px;
-  left: auto;
-}
-
 
 
