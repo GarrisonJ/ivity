@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
+<script src="/twitter-bootstrap/twitter-bootstrap-v2/js/bootstrap-tooltip.js"></script>  
+<script src="/twitter-bootstrap/twitter-bootstrap-v2/js/bootstrap-popover.js"></script>   
+<html>
+<head>
+  <title><%=h yield(:title) %></title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<div class="container">
+	  <h1>Ivity.it
+	  <small class="muted">-A simpler way to see what's happening.</small>
+	  </h1>
+	</div>
+	<div class="container">
+		<% flash.each do |type, message| %>
+			<div class="alert <%= flash_class type %>">
+				<button class="close" data-dismiss="alert">x</button>
+			<%= message %>
+			</div>
+		<% end %>
+
+		<%= yield %>
+	</div>
+</body>
+</html>

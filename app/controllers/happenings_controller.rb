@@ -2,9 +2,25 @@ class HappeningsController < ApplicationController
 
 before_filter :authenticate_user!, :only => [:new, :create, :edit, :update, :destroy]
 before_filter :require_login, :only => [:index] # Will not show error message
+layout "application-no-toolbar", :only => [:search]
   # GET /happenings
   # GET /happenings.json
   def index
+    if params[:tag]
+      @happenings = Happening.tagged_with(params[:tag]).reverse_order.page(params[:page]).per(10)
+    elsif params[:search]
+      @happenings = Happening.tagged_with("#{params[:search]}").reverse_order.page(params[:page]).per(10)
+    else
+      @happenings = Happening.order("time_of").reverse_order.page(params[:page]).per(10)
+    end
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render :json => @happenings }
+    end
+  end
+
+  def search
     if params[:tag]
       @happenings = Happening.tagged_with(params[:tag]).reverse_order.page(params[:page]).per(10)
     elsif params[:search]

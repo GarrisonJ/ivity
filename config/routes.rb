@@ -16,6 +16,8 @@ Ivity::Application.routes.draw do
   
   root :to => 'happenings#index'
 
+  get 'search' => 'happenings#search'
+
   get ':id', :to => 'profiles#show'
 
   # The priority is based upon order of creation:
