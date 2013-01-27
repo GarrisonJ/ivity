@@ -11,6 +11,19 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<div class="row-fluid">
+	<div class="span12">
+		<div class="pull-right" style="padding:10px;">
+			<% if user_signed_in? %>
+		    	<%= link_to "Profile", "/"+current_user.profile_name %>
+		    	<%= link_to "Log out", logout_path %>
+			<% else %>
+				<%= link_to "Register", register_path %> |
+				<%= link_to "Sign in", login_path %>
+			<% end %>
+		</div>
+	</div>
+</div>
 <div class="container">
 	<% flash.each do |type, message| %>
 		<div class="alert <%= flash_class type %>">
