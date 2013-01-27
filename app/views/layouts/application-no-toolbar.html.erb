@@ -6,24 +6,20 @@
 <head>
   <title><%=h yield(:title) %></title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= stylesheet_link_tag    "bootstrap-responsive", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<div class="container">
-	  <h1>Ivity.it
-	  <small class="muted">-A simpler way to see what's happening.</small>
-	  </h1>
-	</div>
-	<div class="container">
-		<% flash.each do |type, message| %>
-			<div class="alert <%= flash_class type %>">
-				<button class="close" data-dismiss="alert">x</button>
-			<%= message %>
-			</div>
-		<% end %>
+<div class="container">
+	<% flash.each do |type, message| %>
+		<div class="alert <%= flash_class type %>">
+			<button class="close" data-dismiss="alert">x</button>
+		<%= message %>
+		</div>
+	<% end %>
+	<%= yield %>
+</div>
 
-		<%= yield %>
-	</div>
 </body>
 </html>
