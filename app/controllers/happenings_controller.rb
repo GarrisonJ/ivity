@@ -1,7 +1,7 @@
 class HappeningsController < ApplicationController
 
 before_filter :authenticate_user!, :only => [:new, :create, :edit, :update, :destroy]
-before_filter :require_login, :only => [:index] # Will not show error message
+# before_filter :require_login, :only => [:index] # Will not show error message
 layout "application-no-toolbar", :only => [:search]
   # GET /happenings
   # GET /happenings.json
