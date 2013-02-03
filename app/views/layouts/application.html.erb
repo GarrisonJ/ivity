@@ -13,7 +13,7 @@
 	<div class="navbar navbar-fixed-top">
 		<div class="navbar-inner">
 			<div class="container">
-				<a><%= link_to "Ivity.it", feed_path , :class => 'brand' %></a>
+				<%= link_to "Ivity.it", feed_path , :class => 'brand' %>
 				<!-- Begin search code -->
 				<%= form_tag("/", :method => "get", :class => "navbar-search pull-left") do %>
 				  <%= submit_tag("", :class => "search-query", :name=>"search", :placeholder => "Search", :type=>"text") %>
