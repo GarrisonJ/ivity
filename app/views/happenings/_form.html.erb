@@ -18,9 +18,8 @@
       <div class="span3"><%= f.input :tag_list, :hint => "Seperate tags with commas \",\"" %></div>
     </div>
     <div class="row-fluid">
-      <div class="span12"><%= f.input :time_of, :label => 'Start Date', :start_year => Date.today.year,
-                            :end_year => Date.today.year + 1, 
-                            :ampm => true %>
+      <div class="input-append date" id="dp3" data-date-format="dd-mm-yyyy">
+         <input class="span2 datepicker" size="16" type="text" value="Start Date" data="time_of">
       </div>
     </div>
     <div class="row-fluid">
@@ -31,3 +30,7 @@
   <%= f.button :submit %>
   </div>
 <% end %>
+
+<script type="text/javascript">
+$('.datepicker').datepicker()
+</script>
