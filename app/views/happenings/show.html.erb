@@ -32,6 +32,11 @@
 			<%= show_tag_list @happening %>
 		</p>
 		<p>
+			<% if @happening.website %>
+				<a> <%= raw @happening.website%> </a>
+			<% end %>
+		</p>
+		<p>
 			<% if current_user == @happening.user %>
 			<%= link_to 'Edit', edit_happening_path(@happening) %> |
 			<%= link_to 'Delete', @happening, :confirm => 'Are you sure?', :method => :delete %> |
