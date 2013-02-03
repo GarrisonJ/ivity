@@ -5,7 +5,7 @@
 	<div class="span3">
 		<p class="lead happening-title"><%= @happening.title %></p>
 
-		<p class="muted">
+		<p class="muted createdby">
 		  <small>Created by: <%= link_to @happening.user.profile_name, "/"+@happening.user.profile_name %></small>
 		</p>
 
@@ -18,7 +18,7 @@
 			<%= @happening.content %>
 		</p>
 		<p>
-			<% if @happening.website %>
+			<% unless @happening.website.blank? %>
 				<a> <%= link_to @happening.website, @happening.website %> </a>
 			<% end %>
 		</p>
