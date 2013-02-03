@@ -8,6 +8,7 @@
 		<p class="muted">
 		  <small>Created by: <%= link_to @happening.user.profile_name, "/"+@happening.user.profile_name %></small>
 		</p>
+
 		<p>
 			<div id="favorite">
 				<%= render 'favorites/favorite_button', :happening => @happening %>
@@ -16,8 +17,14 @@
 		<p>
 			<%= @happening.content %>
 		</p>
-			<div class="active item"><%= @happening.time_of.strftime("%a | %B %d | %I:%M %p") %></div>
 		<p>
+			<% if @happening.website %>
+				<a> <%= link_to @happening.website, @happening.website %> </a>
+			<% end %>
+		</p>
+		<p>
+			<div class="active item"><%= @happening.time_of.strftime("%a | %B %d | %I:%M %p") %></div>
+		</p>
 		<!-- start twitter-->
 		<p>
 			<a href="https://twitter.com/share" class="twitter-share-button" data-lang="en">Tweet</a>
@@ -30,11 +37,6 @@
 		<p> 
 			<b>Tags:</b>
 			<%= show_tag_list @happening %>
-		</p>
-		<p>
-			<% if @happening.website %>
-				<a> <%= raw @happening.website%> </a>
-			<% end %>
 		</p>
 		<p>
 			<% if current_user == @happening.user %>
