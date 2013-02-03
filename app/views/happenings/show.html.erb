@@ -41,7 +41,9 @@
 	</div>
 
 	<div class="span6"> 
-		<%= gmaps("map_options" => { "detect_location" => true, "center_on_user" => false, "auto_zoom" => false, "zoom" => 14},"markers" => { "data" => @json }) %>
+		<%= gmaps("map_options" => { "detect_location" => true, "center_on_user" => false, 
+									 "auto_zoom" => false, "zoom" => 14}, "markers" => { "data" => @json }) 
+									 %>
 	</div>
 
 	<div class="span3">
