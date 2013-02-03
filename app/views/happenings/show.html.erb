@@ -18,7 +18,7 @@
 			<%= @happening.content %>
 		</p>
 		<p>
-			<% unless @happening.website.blank? %>
+			<% if @happening.website %>
 				<a> <%= link_to @happening.website, @happening.website %> </a>
 			<% end %>
 		</p>

@@ -21,14 +21,4 @@ class Happening < ActiveRecord::Base
   def gmaps4rails_address
   	self.address 
   end
-
-  def website= url_str
-  unless url_str.blank?
-    unless url_str.split(':')[0] == 'http' || url_str.split(':')[0] == 'https'
-        url_str = "http://" + url_str
-    end
-  end  
-  write_attribute :website, url_str
-end
-
 end
