@@ -11,6 +11,8 @@ class Happening < ActiveRecord::Base
 
   validates :user_id, :presence => true
 
+  validates :time_of, :presence => true
+
   validates :title, :presence => true,
                     :length => { :minimum => 2, :maximum => 20 }
                     
