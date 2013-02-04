@@ -25,15 +25,12 @@
 
   <div class="span6">
     <label>Date range</label>
-     <div class="input-append" id="happeing" data-date-format="dd-mm-yyyy">
-        <input class="datepicker" size="16" type="text" value="Start Date" data="time_of" name="happening[time_of]">
-        <%= f.time_select :time_of, :minute_step => 15, :ampm => :true %>
-     </div>
-        to
-     <div class="input-append" id="happeing" data-date-format="dd-mm-yyyy">
-        <input class="datepicker" size="16" type="text" value="Start Date" data="end_time" name="happening[end_time]">
-        <%= f.time_select :end_time, :minute_step => 15, :ampm => :true %>
-     </div>
+    <div>
+      <%= f.text_field :time_of, :class=>"datepicker" %> 
+    </div>to
+    <div>
+      <%= f.text_field :end_time, :class=>"datepicker" %> 
+    </div>
   </div> 
 </div>
 
@@ -44,5 +41,11 @@
 <% end %>
 
 <script type="text/javascript">
-$('.datepicker').datepicker()
+$(".datepicker").datepicker({
+    noDefault: false, // set this to true if you don't want the current date inserted if the value-attribute is empty
+    format: 'mm/dd/yyyy hh:ii:ss',
+    weekStart: 1,
+    days: ["Sun","Mon","Tus","Wed","Thu","Fri","Sat"],
+    months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+});
 </script>
