@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130203193301) do
+ActiveRecord::Schema.define(:version => 20130203233831) do
 
   create_table "favorites", :force => true do |t|
     t.integer  "user_id"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(:version => 20130203193301) do
     t.string   "title"
     t.datetime "time_of"
     t.string   "website"
+    t.datetime "end_time"
   end
 
   add_index "happenings", ["user_id"], :name => "index_happenings_on_user_id"
