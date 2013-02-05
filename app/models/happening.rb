@@ -17,7 +17,7 @@ class Happening < ActiveRecord::Base
                     :length => { :minimum => 2, :maximum => 20 }
                     
   belongs_to :user
-  has_many   :favorites
+  has_many   :favorites, :dependent => :destroy
   has_many   :favorited, :through => :favorites, :source => :user    
 
   def gmaps4rails_address
