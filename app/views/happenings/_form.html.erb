@@ -13,39 +13,54 @@
 
 <div class="row">
   <div class="span12">
-    <div class="row">
       <div class="span3"><%= f.input :title %></div>
-      <div class="span3"><%= f.input :tag_list, :placeholder => "Seperate tags with commas \",\"" %></div>
+      <div class="span6"><%= f.input :tag_list, :placeholder => "Seperate tags with commas \",\"" %></div>
       <div class="span3"><%= f.input :website %></div>
       <div class="span3"><%= f.input :address %></div>
-    </div>
   </div>
-
-  <div class="span3"><%= f.input :content, :label => "Description", :as => :text, :input_html => { :rows => 5 } %></div>
-
-  <div class="span6">
-    <label>Date range</label>
-    <div>
-      <%= f.text_field :time_of, :class=>"datepicker" %> 
-    </div>to
-    <div>
-      <%= f.text_field :end_time, :class=>"datepicker" %> 
-    </div>
-  </div> 
 </div>
 
+<div class="span3"><%= f.input :content, :label => "Description", :as => :text, :input_html => { :rows => 5 } %></div>
 
-  <div class="form-actions">
-  <%= f.button :submit %>
+<div class="span6">
+  <label>Date range</label>
+  <div>
+    <div id="datetimepicker" class="input-append">
+      <%= f.text_field :time_of, :class=>"datepicker", :'data-format'=>"MM/dd/yyyy HH:mm:ss PP", :placeholder=>"Start" %> 
+      <span class="add-on">
+       <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+      </i>
+      </span>
+    </div>
   </div>
+  <div>
+    <div id="datetimepicker2" class="input-append">
+      <%= f.text_field :end_time, :class=>"datepicker", :'data-format'=>"MM/dd/yyyy HH:mm:ss PP", :placeholder=>"End"  %> 
+      <span class="add-on">
+       <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+       </i>
+      </span>
+    </div>
+  </div>
+</div>
+
+<div class="form-actions span12">
+ <%= f.button :submit %>
+</div>
 <% end %>
 
 <script type="text/javascript">
-$(".datepicker").datepicker({
-    noDefault: false, // set this to true if you don't want the current date inserted if the value-attribute is empty
-    format: 'mm/dd/yyyy hh:ii:ss',
-    weekStart: 1,
-    days: ["Sun","Mon","Tus","Wed","Thu","Fri","Sat"],
-    months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
-});
+  $(function() {
+    $('#datetimepicker').datetimepicker({
+      language: 'en',
+      pick12HourFormat: true
+    });
+  });
+
+  $(function() {
+    $('#datetimepicker2').datetimepicker({
+      language: 'en',
+      pick12HourFormat: true
+    });
+  });
 </script>
