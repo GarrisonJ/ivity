@@ -7,11 +7,11 @@ layout "application-no-toolbar", :only => [:search]
   # GET /happenings.json
   def index
     if params[:tag]
-      @happenings = Happening.tagged_with(params[:tag]).reverse_order.page(params[:page]).per(10)
+      @happenings = Happening.where("time_of > ?", Date.yesterday).tagged_with(params[:tag]).reverse_order.page(params[:page]).per(10)
     elsif params[:search]
-      @happenings = Happening.tagged_with("#{params[:search]}").reverse_order.page(params[:page]).per(10)
+      @happenings = Happening.where("time_of > ?", Date.yesterday).tagged_with("#{params[:search]}").reverse_order.page(params[:page]).per(10)
     else
-      @happenings = Happening.order("time_of").reverse_order.page(params[:page]).per(10)
+      @happenings = Happening.where("time_of > ?", Date.yesterday).order("time_of").reverse_order.page(params[:page]).per(10)
     end
 
     respond_to do |format|
@@ -22,11 +22,11 @@ layout "application-no-toolbar", :only => [:search]
 
   def search
     if params[:tag]
-      @happenings = Happening.tagged_with(params[:tag]).reverse_order.page(params[:page]).per(10)
+      @happenings = Happening.where("time_of > ?", Date.yesterday).tagged_with(params[:tag]).reverse_order.page(params[:page]).per(10)
     elsif params[:search]
-      @happenings = Happening.tagged_with("#{params[:search]}").reverse_order.page(params[:page]).per(10)
+      @happenings = Happening.where("time_of > ?", Date.yesterday).tagged_with("#{params[:search]}").reverse_order.page(params[:page]).per(10)
     else
-      @happenings = Happening.order("time_of").reverse_order.page(params[:page]).per(10)
+      @happenings = Happening.where("time_of > ?", Date.yesterday).order("time_of").reverse_order.page(params[:page]).per(10)
     end
 
     respond_to do |format|
