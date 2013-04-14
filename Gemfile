@@ -9,6 +9,7 @@ gem 'gmaps4rails'
 gem 'kaminari'
 gem 'acts-as-taggable-on', '~> 2.3.1'
 
+gem 'therubyracer'
 
 gem 'devise'
 gem 'simple_form'
