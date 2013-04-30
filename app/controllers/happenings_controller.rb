@@ -119,7 +119,7 @@ layout "application-no-toolbar", :only => [:search]
 
 def require_login
     unless signed_in?
-      redirect_to login_path # halts request cycle
+      redirect_to register_path # halts request cycle
     end
   end
 
