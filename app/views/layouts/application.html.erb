@@ -23,7 +23,7 @@
 					<li><a></a></li> <!-- Space between-->
 					<% if user_signed_in? %>
 						<li><div class="btn-group">
-						  <a class="btn btn-primary" href="<%="/"+current_user.profile_name%>"><%= current_user.full_name %></a>
+						  <a class="btn btn-primary" href="<%="/"+current_user.profile_name%>"><%= current_user.profile_name %></a>
 						  <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
 						  <ul class="dropdown-menu">
 					    	<li><%= link_to "Profile", "/"+current_user.profile_name %></li>

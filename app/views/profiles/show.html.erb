@@ -1,11 +1,11 @@
 <div class="page-header">
-	<%=content_for(:title, @user.full_name) %>
+	<%=content_for(:title, @user.profile_name) %>
 	<h1><%=h yield(:title) %></h1>
 </div>
 <div class="row-fluid">
 	<div class="span7">
 	<table class="table table-bordered">
-		<thread><th><h4>Created by <%=@user.full_name%></h4></th></thread>
+		<thread><th><h4>Created by <%=@user.profile_name%></h4></th></thread>
 		</tbody>
 		<tr>
 		<td>
