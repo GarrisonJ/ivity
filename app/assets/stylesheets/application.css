@@ -11,6 +11,12 @@
  *= require_self
  *= require_tree .
 */
+
+#image-background {
+  background:#ffffff url('PortlandSky.jpg') no-repeat left top;
+  background-size:cover; 
+}
+
 .title {
   color: #e5e5e5;
 }
