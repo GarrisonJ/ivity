@@ -17,6 +17,11 @@
   background-size:cover; 
 }
 
+#background-cite {
+  float: right;
+  position: absolute bottom;
+}
+
 .title {
   color: #e5e5e5;
 }
