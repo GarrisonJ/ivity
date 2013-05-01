@@ -56,7 +56,7 @@
 	  <b>Attending:</b> <span class="badge badge-success"><%= @favorites.count %></span></br>
 	    <div class="attending_user">
 		  <% @favorites.reverse_each do |f| %>
-		  	<a class="text-success" href="<%="/"+f.user.profile_name %>"><%= f.user.full_name %></a></br>
+		  	<a class="text-success" href="<%="/"+f.user.profile_name %>"><%= f.user.profile_name %></a></br>
 		  <% end %>
 		</div>
 	</div>
