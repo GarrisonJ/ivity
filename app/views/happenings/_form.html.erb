@@ -24,29 +24,17 @@
 
 <div class="span6">
   <label>Date range</label>
-  <div>
-    <div id="datetimepicker" class="input-append">
-      <%= f.input :time_of, :class=>"datepicker", 
-                       :'data-format'=>"MM/dd/yyyy HH:mm:ss PP", 
-                       :placeholder=>"Start",
-                       :value => (@happening.time_of.blank? ? '' : @happening.time_of.strftime('%m/%d/%Y %I:%M:%S %p')) %> 
-      <!--<span class="add-on">
-       <i data-time-icon="icon-time" data-date-icon="icon-calendar">
-      </i>
-      </span>-->
-    </div>
+  <div id="datetimepicker1" class="input-append date">
+      <input data-format="dd/MM/yyyy hh:mm:ss" type="text" name="happening[time_of]"></input>
+      <span class="add-on">
+        <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+      </span>
   </div>
-  <div>
-    <div id="datetimepicker2" class="input-append">
-      <%= f.input :end_time, :class=>"datepicker", 
-                       :'data-format'=>"MM/dd/yyyy HH:mm:ss PP", 
-                       :placeholder=>"Start",
-                       :value => (@happening.end_time.blank? ? '' : @happening.end_time.strftime('%m/%d/%Y %I:%M:%S %p')) %> 
-<!--      <span class="add-on">
-       <i data-time-icon="icon-time" data-date-icon="icon-calendar">
-       </i>
-      </span>-->
-    </div>
+  <div id="datetimepicker2" class="input-append date">
+      <input data-format="dd/MM/yyyy hh:mm:ss" type="text" name="happening[end_time]"></input>
+      <span class="add-on">
+        <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+      </span>
   </div>
 </div>
 
@@ -56,18 +44,19 @@
 </div>
 <% end %>
 
-<!--<script type="text/javascript">
+
+<script type="text/javascript">
   $(function() {
-    $('#datetimepicker').datetimepicker({
-      language: 'en',
-      pick12HourFormat: true
+    $('#datetimepicker1').datetimepicker({
+      language: 'pt-BR'
     });
   });
+</script>
 
+<script type="text/javascript">
   $(function() {
     $('#datetimepicker2').datetimepicker({
-      language: 'en',
-      pick12HourFormat: true
+      language: 'pt-BR'
     });
   });
-</script>-->
+</script>
