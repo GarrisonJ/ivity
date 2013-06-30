@@ -51,9 +51,9 @@
   </div>
   <!-- START MAP -->
   <div class="tab-pane map_large" id="map">
-        <%= gmaps("map_options" => { "detect_location" => true, "center_on_user" => false, 
-                   "auto_zoom" => false, "zoom" => 14}, "markers" => { "data" => @json }) 
-                   %>
+    <div class="span12">
+        <%= gmaps4rails(@json) %>
+    </div>
   </div>
   <!-- END MAP-->
 </div><!-- end tab content -->

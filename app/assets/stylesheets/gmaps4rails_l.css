@@ -10,14 +10,19 @@
 }
 
 .gmaps4rails_map {
-  width: 950px;
+  width: 90px;
   height: 500px;
 }
 .map_large {
-  width: 950px;
-  height: 500px;
+  height: 490px;
 }
 
+#map img { 
+  max-width: none;
+}
+#map label { 
+  width: auto; display:inline; 
+} 
 
 .bing_map {
    position: absolute;
