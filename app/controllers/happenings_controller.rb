@@ -8,12 +8,14 @@ layout "application-no-toolbar", :only => [:search]
   def index
     if params[:tag]
       @happenings = Happening.where("time_of > ?", Date.yesterday).tagged_with(params[:tag]).reverse_order.page(params[:page]).per(10)
+       @json = Happening.all.to_gmaps4rails
     elsif params[:search]
       @happenings = Happening.where("time_of > ?", Date.yesterday).tagged_with("#{params[:search]}").reverse_order.page(params[:page]).per(10)
+       @json = Happening.all.to_gmaps4rails
     else
       @happenings = Happening.where("time_of > ?", Date.yesterday).order("time_of").reverse_order.page(params[:page]).per(10)
+       @json = Happening.all.to_gmaps4rails
     end
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render :json => @happenings }

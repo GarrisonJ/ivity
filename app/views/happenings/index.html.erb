@@ -1,39 +1,68 @@
+<%= stylesheet_link_tag 'gmaps4rails_l' %>
+
+<!-- START: Map List tabs-->
+<ul class="nav nav-tabs" id="myTab">
+ <li class="active"><a href="#list">List</a></li>
+ <li><a href="#map">Map</a></li>
+</ul>
+<!--END: Map List tabs-->
 
 <div class="page-header">
   <h1><%=h content_for(:title, "Ivity.it") %></h1>
 </div>
-<% @happenings.each do |happening| %>
-<div class="accordion">
-  <div class="accordion-group">
-    <div class="accordion-heading">
-       <a class="accordion-toggle" data-toggle="collapse" href="#collapse<%=happening.id%>">
-        <div class="row-fluid">
-          <strong class="pull-left span3"><%= happening.title %></strong>
-          <p class="muted pull-right">Created by: <%= happening.user.profile_name %></p>
-          <p class="span5 text-info"><%= happening.content %></p>
-      </div>
-      </a>
-    </div>
 
-    <div id="collapse<%=happening.id%>" class="accordion-body collapse">
-      <div class="accordion-inner">
-        <div class="happening">
-          <p><b>What: </b><%= happening.content %></p>
-          <p><b>Where: </b> <%= happening.address %></p>
-          <p><b>When: </b> <%= happening.time_of.strftime("%a | %B %d | %I:%M %p") %></p>
-          <div class="meta">
-            <%= link_to "More", happening %>
-            <% if current_user == happening.user %>
-            <span class="admin">
-              | <%= link_to "Edit", edit_happening_path(happening) %> |
-                <%= link_to 'Delete', happening, :confirm => 'Are you sure?', :method => :delete %>
-            </span>
-            <% end %>
+<div class="tab-content"> <!-- start tab content -->
+
+  <div class="tab-pane active" id="list">
+  <% @happenings.each do |happening| %>
+  <div class="accordion">
+    <div class="accordion-group">
+      <div class="accordion-heading">
+         <a class="accordion-toggle" data-toggle="collapse" href="#collapse<%=happening.id%>">
+          <div class="row-fluid">
+            <strong class="pull-left span3"><%= happening.title %></strong>
+            <p class="muted pull-right">Created by: <%= happening.user.profile_name %></p>
+            <p class="span5 text-info"><%= happening.content %></p>
+        </div>
+        </a>
+      </div>
+
+      <div id="collapse<%=happening.id%>" class="accordion-body collapse">
+        <div class="accordion-inner">
+          <div class="happening">
+            <p><b>What: </b><%= happening.content %></p>
+            <p><b>Where: </b> <%= happening.address %></p>
+            <p><b>When: </b> <%= happening.time_of.strftime("%a | %B %d | %I:%M %p") %></p>
+            <div class="meta">
+              <%= link_to "More", happening %>
+              <% if current_user == happening.user %>
+              <span class="admin">
+                | <%= link_to "Edit", edit_happening_path(happening) %> |
+                  <%= link_to 'Delete', happening, :confirm => 'Are you sure?', :method => :delete %>
+              </span>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-<% end %>
+  <% end %>
+  </div>
+  <!-- START MAP -->
+  <div class="tab-pane map_large" id="map">
+        <%= gmaps("map_options" => { "detect_location" => true, "center_on_user" => false, 
+                   "auto_zoom" => false, "zoom" => 14}, "markers" => { "data" => @json }) 
+                   %>
+  </div>
+  <!-- END MAP-->
+</div><!-- end tab content -->
 <%= paginate @happenings %>
+<%= yield :scripts %> 
+
+<script>
+$('#myTab a').click(function (e) {
+  e.preventDefault();
+  $(this).tab('show');
+})
+</script>
