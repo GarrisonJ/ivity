@@ -14,7 +14,7 @@ class Happening < ActiveRecord::Base
   validates :time_of, :presence => true
 
   validates :title, :presence => true,
-                    :length => { :minimum => 2, :maximum => 20 }
+                    :length => { :minimum => 2, :maximum => 140 }
                     
   belongs_to :user
   has_many   :favorites, :dependent => :destroy
