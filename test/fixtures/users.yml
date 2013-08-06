@@ -1,12 +1,8 @@
 bill:
- first_name: "bill"
- last_name: "smith"
  email: "bill.smith@gmail.com"
  profile_name: "billsmith"
 
 fin:
- first_name: "fin"
- last_name: "human"
  email: "fin_the_human@gmail.com"
  profile_name: "FinHuman"
 
