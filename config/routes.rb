@@ -16,7 +16,7 @@ Ivity::Application.routes.draw do
   
   root :to => 'happenings#index'
 
-  get 'search' => 'happenings#search'
+  get 'search' => 'happenings#index'
 
   get ':id', :to => 'profiles#show'
 

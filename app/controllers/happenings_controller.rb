@@ -20,21 +20,6 @@ layout "application-no-toolbar", :only => [:search]
     end
   end
 
-  def search
-    if params[:tag]
-      @happenings = Happening.where("time_of > ?", Date.yesterday).tagged_with(params[:tag]).reverse_order.page(params[:page]).per(10)
-    elsif params[:search]
-      @happenings = Happening.where("time_of > ?", Date.yesterday).tagged_with("#{params[:search]}").reverse_order.page(params[:page]).per(10)
-    else
-      @happenings = Happening.where("time_of > ?", Date.yesterday).order("time_of").reverse_order.page(params[:page]).per(10)
-    end
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render :json => @happenings }
-    end
-  end
-
   # GET /happenings/1
   # GET /happenings/1.json
   def show
